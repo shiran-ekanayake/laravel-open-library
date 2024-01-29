@@ -11,11 +11,12 @@ class OpenLibrary
 {
     const BASE_URL = 'https://openlibrary.org/';
 
-    public function searchAuthor(string $query) : Collection {
+    public function searchAuthor(string $query): Collection
+    {
         $results = $this->openLibraryHttpGetRequest('search/authors.json', ['q' => $query]);
         $result = $results->object();
 
-        if($result->numFound > 0) {
+        if ($result->numFound > 0) {
             return collect($result->docs)->map(function ($author) {
                 return [
                     'key' => $author->key,
@@ -27,10 +28,11 @@ class OpenLibrary
         return collect();
     }
 
-    private function openLibraryHttpGetRequest($path, $params) : Response {
+    private function openLibraryHttpGetRequest($path, $params): Response
+    {
         $response = Http::withHeaders(['Accept' => 'application/json'])->get(self::BASE_URL.$path, $params);
 
-        if($response->ok()) {
+        if ($response->ok()) {
             return $response;
         } else {
             throw new Exception('Open Library API request error!');
