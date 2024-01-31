@@ -22,7 +22,7 @@ class OpenLibrary
         $results = $this->openLibraryHttpGetRequest('search/authors.json', ['q' => $query]);
         $result = $results->object();
 
-        if($result->numFound > 0) {
+        if ($result->numFound > 0) {
             return collect($result->docs)->map(function ($author) {
                 return (new OpenLibraryAuthor($author->key, $author->name))
                 ->setAlternateNames(isset($author->alternate_names) ? collect($author->alternate_names) : collect())
@@ -81,7 +81,7 @@ class OpenLibrary
     private function openLibraryHttpGetRequest(string $path, array $params = []) : Response {
         $response = Http::withHeaders(['Accept' => 'application/json'])->get(self::BASE_URL.$path, $params);
 
-        if($response->ok()) {
+        if ($response->ok()) {
             return $response;
         } 
         else {
