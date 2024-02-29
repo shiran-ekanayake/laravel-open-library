@@ -24,12 +24,12 @@ class OpenLibrary
         if ($result->numFound > 0) {
             return collect($result->docs)->map(function ($author) {
                 return (new OpenLibraryAuthor($author->key, $author->name))
-                ->setAlternateNames(isset($author->alternate_names) ? collect($author->alternate_names) : collect())
-                ->setBirthDate($author->birth_date ?? '')
-                ->setTopSubjects(isset($author->top_subjects) ? collect($author->top_subjects) : collect())
-                ->setTopWork($author->top_work ?? '')
-                ->setWorkCount($author->work_count)
-                ->setMeta($author);
+                    ->setAlternateNames(isset($author->alternate_names) ? collect($author->alternate_names) : collect())
+                    ->setBirthDate($author->birth_date ?? '')
+                    ->setTopSubjects(isset($author->top_subjects) ? collect($author->top_subjects) : collect())
+                    ->setTopWork($author->top_work ?? '')
+                    ->setWorkCount($author->work_count)
+                    ->setMeta($author);
             });
         }
 
@@ -39,16 +39,16 @@ class OpenLibrary
     /**
      * Search for works by a given query
      *
-     * @param string $query
-     * @return Collection
+     * @param  string  $query
      */
-    public function searchWorks(string $title) : Collection {
+    public function searchWorks(string $title): Collection
+    {
         $results = $this->openLibraryHttpGetRequest('search.json', ['title' => $title]);
         $result = $results->object();
 
         if ($result->numFound > 0) {
             return collect($result->docs)->map(function ($work) {
-                return (new OpenLibraryWork($work->key, $work->title, $this->getAuthor($work->author_key[0])));
+                return new OpenLibraryWork($work->key, $work->title, $this->getAuthor($work->author_key[0]));
             });
         }
 
@@ -57,30 +57,27 @@ class OpenLibrary
 
     /**
      * Retrieve an author by a given key
-     *
-     * @param string $key
-     * @return OpenLibraryAuthor
      */
     public function getAuthor(string $key): OpenLibraryAuthor
     {
         $results = $this->openLibraryHttpGetRequest('authors/'.$key);
         $result = $results->object();
 
-        if(isset($result->key)) {
-            $author = (new OpenLibraryAuthor(str_replace('/authors/','', $result->key), $result->name))
-            ->setTitle($result->title ?? '')
-            ->setBio($result->bio ?? '')
-            ->setPersonalName($result->personal_name ?? '')
-            ->setAlternateNames(isset($result->alternate_names) ? collect($result->alternate_names) : collect())
-            ->setBirthDate($result->birth_date ?? '')
-            ->setDeathDate($result->death_date ?? '')
-            ->setPeriod($result->date ?? '')
-            ->setWikipeadiaLink($result->wikipedia ?? '')
-            ->setLinks(isset($result->links) ? collect($result->links) : collect())
-            ->setPhotos(collect(isset($result->photos) ?? collect())->map(function ($photo) {
-                return 'https://covers.openlibrary.org/a/id/'.$photo.'-M.jpg';
-            }))
-            ->setMeta($result);
+        if (isset($result->key)) {
+            $author = (new OpenLibraryAuthor(str_replace('/authors/', '', $result->key), $result->name))
+                ->setTitle($result->title ?? '')
+                ->setBio($result->bio ?? '')
+                ->setPersonalName($result->personal_name ?? '')
+                ->setAlternateNames(isset($result->alternate_names) ? collect($result->alternate_names) : collect())
+                ->setBirthDate($result->birth_date ?? '')
+                ->setDeathDate($result->death_date ?? '')
+                ->setPeriod($result->date ?? '')
+                ->setWikipeadiaLink($result->wikipedia ?? '')
+                ->setLinks(isset($result->links) ? collect($result->links) : collect())
+                ->setPhotos(collect(isset($result->photos) ?? collect())->map(function ($photo) {
+                    return 'https://covers.openlibrary.org/a/id/'.$photo.'-M.jpg';
+                }))
+                ->setMeta($result);
 
             // Api does not provide some data returned by the search API, to include that data
             // call search API

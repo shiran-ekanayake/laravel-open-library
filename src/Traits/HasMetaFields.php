@@ -2,13 +2,14 @@
 
 namespace Sse\OpenLibrary\Traits;
 
-trait HasMetaFields {
-
+trait HasMetaFields
+{
     protected ?object $meta = null;
 
     public function setMeta(?object $meta): self
     {
         $this->meta = $meta;
+
         return $this;
     }
 
