@@ -10,19 +10,33 @@ class OpenLibraryAuthor {
     use HasMetaFields;
     
     protected string $key;
+
     protected string $name;
+
     protected string $title = '';
+
     protected string $bio = '';
+
     protected string $personalName = '';
+
     protected Collection $alternateNames;
+
     protected string $birthDate = '';
+
     protected string $deathDate = '';
+
     protected string $period = '';
+
     protected string $wikipeadiaLink = '';
+
     protected Collection $links;
+
     protected Collection $photos;
+
     protected string $topWork = '';
+
     protected int $workCount = 0;
+
     protected Collection $topSubjects;
 
     public function __construct(string $key, string $name)
@@ -43,6 +57,7 @@ class OpenLibraryAuthor {
     public function setKey(string $key): self
     {
         $this->key = $key;
+
         return $this;
     }
 
@@ -54,6 +69,7 @@ class OpenLibraryAuthor {
     public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -65,6 +81,7 @@ class OpenLibraryAuthor {
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -76,6 +93,7 @@ class OpenLibraryAuthor {
     public function setBio(string $bio): self
     {
         $this->bio = $bio;
+
         return $this;
     }
 
@@ -87,6 +105,7 @@ class OpenLibraryAuthor {
     public function setPersonalName(string $personalName): self
     {
         $this->personalName = $personalName;
+
         return $this;
     }
 
@@ -98,6 +117,7 @@ class OpenLibraryAuthor {
     public function setAlternateNames(Collection $alternateNames): self
     {
         $this->alternateNames = $alternateNames;
+
         return $this;
     }
 
@@ -109,6 +129,7 @@ class OpenLibraryAuthor {
     public function setBirthDate(string $birthDate): self
     {
         $this->birthDate = $birthDate;
+
         return $this;
     }
 
@@ -120,6 +141,7 @@ class OpenLibraryAuthor {
     public function setDeathDate(string $deathDate): self
     {
         $this->deathDate = $deathDate;
+
         return $this;
     }
 
@@ -131,6 +153,7 @@ class OpenLibraryAuthor {
     public function setPeriod(string $period): self
     {
         $this->period = $period;
+
         return $this;
     }
 
@@ -142,6 +165,7 @@ class OpenLibraryAuthor {
     public function setWikipeadiaLink(string $wikipeadiaLink): self
     {
         $this->wikipeadiaLink = $wikipeadiaLink;
+
         return $this;
     }
 
@@ -153,6 +177,7 @@ class OpenLibraryAuthor {
     public function setLinks(Collection $links): self
     {
         $this->links = $links;
+
         return $this;
     }
 
@@ -164,6 +189,7 @@ class OpenLibraryAuthor {
     public function setPhotos(Collection $photos): self
     {
         $this->photos = $photos;
+
         return $this;
     }
 
@@ -175,6 +201,7 @@ class OpenLibraryAuthor {
     public function setTopWork(string $topWork): self
     {
         $this->topWork = $topWork;
+
         return $this;
     }
 
@@ -186,6 +213,7 @@ class OpenLibraryAuthor {
     public function setWorkCount(int $workCount): self
     {
         $this->workCount = $workCount;
+
         return $this;
     }
 
@@ -197,6 +225,7 @@ class OpenLibraryAuthor {
     public function setTopSubjects(Collection $topSubjects): self
     {
         $this->topSubjects = $topSubjects;
+
         return $this;
     }
 }

@@ -15,11 +15,9 @@ class OpenLibrary
 
     /**
      * Search for authors by a given query
-     *
-     * @param string $query
-     * @return Collection
      */
-    public function searchAuthors(string $query) : Collection {
+    public function searchAuthors(string $query): Collection
+    {
         $results = $this->openLibraryHttpGetRequest('search/authors.json', ['q' => $query]);
         $result = $results->object();
 
@@ -63,7 +61,8 @@ class OpenLibrary
      * @param string $key
      * @return OpenLibraryAuthor
      */
-    public function getAuthor(string $key) : OpenLibraryAuthor {
+    public function getAuthor(string $key): OpenLibraryAuthor
+    {
         $results = $this->openLibraryHttpGetRequest('authors/'.$key);
         $result = $results->object();
 
@@ -85,8 +84,8 @@ class OpenLibrary
 
             // Api does not provide some data returned by the search API, to include that data
             // call search API
-            foreach($this->searchAuthors($author->getName()) as $result) {
-                if($result->getKey() == $author->getKey()) {
+            foreach ($this->searchAuthors($author->getName()) as $result) {
+                if ($result->getKey() == $author->getKey()) {
                     $author->setTopSubjects($result->getTopSubjects());
                     $author->setTopWork($result->getTopWork());
                     $author->setWorkCount($result->getWorkCount());
@@ -100,13 +99,13 @@ class OpenLibrary
         throw new Exception('Author not found for given key : '.$key);
     }
 
-    private function openLibraryHttpGetRequest(string $path, array $params = []) : Response {
+    private function openLibraryHttpGetRequest(string $path, array $params = []): Response
+    {
         $response = Http::withHeaders(['Accept' => 'application/json'])->get(self::BASE_URL.$path, $params);
 
         if ($response->ok()) {
             return $response;
-        } 
-        else {
+        } else {
             throw new Exception('Open Library API request error!');
         }
     }
