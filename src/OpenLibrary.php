@@ -7,6 +7,7 @@ use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Sse\OpenLibrary\Classes\OpenLibraryAuthor;
+use Sse\OpenLibrary\Classes\OpenLibraryWork;
 
 class OpenLibrary
 {
@@ -26,10 +27,30 @@ class OpenLibrary
             return collect($result->docs)->map(function ($author) {
                 return (new OpenLibraryAuthor($author->key, $author->name))
                 ->setAlternateNames(isset($author->alternate_names) ? collect($author->alternate_names) : collect())
-                ->setBirthDate($result->birth_date ?? '')
+                ->setBirthDate($author->birth_date ?? '')
                 ->setTopSubjects(isset($author->top_subjects) ? collect($author->top_subjects) : collect())
                 ->setTopWork($author->top_work ?? '')
-                ->setWorkCount($author->work_count);
+                ->setWorkCount($author->work_count)
+                ->setMeta($author);
+            });
+        }
+
+        return collect();
+    }
+
+    /**
+     * Search for works by a given query
+     *
+     * @param string $query
+     * @return Collection
+     */
+    public function searchWorks(string $title) : Collection {
+        $results = $this->openLibraryHttpGetRequest('search.json', ['title' => $title]);
+        $result = $results->object();
+
+        if ($result->numFound > 0) {
+            return collect($result->docs)->map(function ($work) {
+                return (new OpenLibraryWork($work->key, $work->title, $this->getAuthor($work->author_key[0])));
             });
         }
 
@@ -40,7 +61,7 @@ class OpenLibrary
      * Retrieve an author by a given key
      *
      * @param string $key
-     * @return array
+     * @return OpenLibraryAuthor
      */
     public function getAuthor(string $key) : OpenLibraryAuthor {
         $results = $this->openLibraryHttpGetRequest('authors/'.$key);
@@ -59,7 +80,8 @@ class OpenLibrary
             ->setLinks(isset($result->links) ? collect($result->links) : collect())
             ->setPhotos(collect(isset($result->photos) ?? collect())->map(function ($photo) {
                 return 'https://covers.openlibrary.org/a/id/'.$photo.'-M.jpg';
-            }));
+            }))
+            ->setMeta($result);
 
             // Api does not provide some data returned by the search API, to include that data
             // call search API
