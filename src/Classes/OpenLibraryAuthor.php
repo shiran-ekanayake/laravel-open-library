@@ -92,10 +92,9 @@ class OpenLibraryAuthor
 
     public function setBio(string|object $bio): self
     {
-        if(is_object($bio)) {
+        if (is_object($bio)) {
             $this->bio = $bio->value;
-        }
-        else {
+        } else {
             $this->bio = $bio;
         }
 
