@@ -90,9 +90,14 @@ class OpenLibraryAuthor {
         return $this->bio;
     }
 
-    public function setBio(string $bio): self
+    public function setBio(string|object $bio): self
     {
-        $this->bio = $bio;
+        if(is_object($bio)) {
+            $this->bio = $bio->value;
+        }
+        else {
+            $this->bio = $bio;
+        }
 
         return $this;
     }

@@ -42,13 +42,23 @@ class OpenLibrary
      * @param string $query
      * @return Collection
      */
-    public function searchWorks(string $title) : Collection {
-        $results = $this->openLibraryHttpGetRequest('search.json', ['title' => $title]);
+    public function searchWorks(string $title, int $pageSize = 5) : Collection {
+        $results = $this->openLibraryHttpGetRequest('search.json', ['title' => $title, 'limit' => $pageSize]);
         $result = $results->object();
 
         if ($result->numFound > 0) {
             return collect($result->docs)->map(function ($work) {
-                return (new OpenLibraryWork($work->key, $work->title, $this->getAuthor($work->author_key[0])));
+                if(isset($work->author_key)) {
+                    return (new OpenLibraryWork(
+                            $work->key, 
+                            $work->title, 
+                            $work->author_key[0]
+                        )
+                    )->setMeta($work)
+                    ->setEditionCount($work->edition_count)
+                    ->setEditionKeys(isset($work->edition_key)? collect($work->edition_key) : collect())
+                    ->setCover('https://covers.openlibrary.org/a/id/'.$work->cover_i.'-M.jpg');
+                }
             });
         }
 
@@ -67,7 +77,7 @@ class OpenLibrary
         $result = $results->object();
 
         if(isset($result->key)) {
-            $author = (new OpenLibraryAuthor(str_replace('/authors/','', $result->key), $result->name))
+            $author = (new OpenLibraryAuthor($result->key, $result->name))
             ->setTitle($result->title ?? '')
             ->setBio($result->bio ?? '')
             ->setPersonalName($result->personal_name ?? '')
@@ -97,6 +107,29 @@ class OpenLibrary
         }
 
         throw new Exception('Author not found for given key : '.$key);
+    }
+
+        /**
+     * Retrieve an author by a given key
+     *
+     * @param string $key
+     * @return OpenLibraryWork
+     */
+    public function getWork(string $key): OpenLibraryWork
+    {
+        $results = $this->openLibraryHttpGetRequest('works/'.$key);
+        $result = $results->object();
+
+        if(isset($result->key)) {
+            return (new OpenLibraryWork($result->key, $result->title, $result->author_key[0]))
+            ->setMeta($result)
+            ->setDescription($result->description ?? '')
+            ->setEditionCount($result->edition_count)
+            ->setEditionKeys(isset($result->edition_key)? collect($result->edition_key) : collect())
+            ->setCover('https://covers.openlibrary.org/a/id/'.$result->cover_i.'-M.jpg');
+        }
+
+        throw new Exception('Work not found for given key : '.$key);
     }
 
     private function openLibraryHttpGetRequest(string $path, array $params = []): Response
