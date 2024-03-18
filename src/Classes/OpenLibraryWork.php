@@ -6,11 +6,12 @@ use Illuminate\Support\Collection;
 use Sse\OpenLibrary\Facades\OpenLibrary;
 use Sse\OpenLibrary\Traits\HasMetaFields;
 
-class OpenLibraryWork {
-
+class OpenLibraryWork
+{
     use HasMetaFields;
 
     protected string $key;
+
     protected string $title;
     protected string $authorKey;
     protected string $description;

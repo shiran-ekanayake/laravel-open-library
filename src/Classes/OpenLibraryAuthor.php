@@ -5,10 +5,10 @@ namespace Sse\OpenLibrary\Classes;
 use Illuminate\Support\Collection;
 use Sse\OpenLibrary\Traits\HasMetaFields;
 
-class OpenLibraryAuthor {
-
+class OpenLibraryAuthor
+{
     use HasMetaFields;
-    
+
     protected string $key;
 
     protected string $name;

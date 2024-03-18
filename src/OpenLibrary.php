@@ -24,12 +24,12 @@ class OpenLibrary
         if ($result->numFound > 0) {
             return collect($result->docs)->map(function ($author) {
                 return (new OpenLibraryAuthor($author->key, $author->name))
-                ->setAlternateNames(isset($author->alternate_names) ? collect($author->alternate_names) : collect())
-                ->setBirthDate($author->birth_date ?? '')
-                ->setTopSubjects(isset($author->top_subjects) ? collect($author->top_subjects) : collect())
-                ->setTopWork($author->top_work ?? '')
-                ->setWorkCount($author->work_count)
-                ->setMeta($author);
+                    ->setAlternateNames(isset($author->alternate_names) ? collect($author->alternate_names) : collect())
+                    ->setBirthDate($author->birth_date ?? '')
+                    ->setTopSubjects(isset($author->top_subjects) ? collect($author->top_subjects) : collect())
+                    ->setTopWork($author->top_work ?? '')
+                    ->setWorkCount($author->work_count)
+                    ->setMeta($author);
             });
         }
 
@@ -39,8 +39,7 @@ class OpenLibrary
     /**
      * Search for works by a given query
      *
-     * @param string $query
-     * @return Collection
+     * @param  string  $query
      */
     public function searchWorks(string $title, int $pageSize = 5) : Collection {
         $results = $this->openLibraryHttpGetRequest('search.json', ['title' => $title, 'limit' => $pageSize]);
@@ -67,9 +66,6 @@ class OpenLibrary
 
     /**
      * Retrieve an author by a given key
-     *
-     * @param string $key
-     * @return OpenLibraryAuthor
      */
     public function getAuthor(string $key): OpenLibraryAuthor
     {
