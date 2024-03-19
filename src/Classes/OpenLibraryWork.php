@@ -13,12 +13,15 @@ class OpenLibraryWork
     protected string $key;
 
     protected string $title;
+
     protected string $authorKey;
+
     protected string $description;
 
     protected string $cover;
 
     protected int $editionCount = 0;
+
     protected Collection $editionKeys;
 
     protected OpenLibraryAuthor $author;
@@ -35,17 +38,19 @@ class OpenLibraryWork
 
     public function getAuthor(): OpenLibraryAuthor
     {
-        if(isset($this->author)) {
+        if (isset($this->author)) {
             return $this->author;
         }
 
         $this->author = OpenLibrary::getAuthor($this->authorKey);
+
         return $this->author;
     }
 
     public function setAuthor(OpenLibraryAuthor $author): self
     {
         $this->author = $author;
+
         return $this;
     }
 
@@ -63,26 +68,26 @@ class OpenLibraryWork
 
     public function getEditionCount(): int
     {
-      return $this->editionCount; 
+        return $this->editionCount;
     }
-  
+
     public function setEditionCount(int $editionCount): self
     {
-      $this->editionCount = $editionCount;
-  
-      return $this;
+        $this->editionCount = $editionCount;
+
+        return $this;
     }
-  
+
     public function getEditionKeys(): Collection
     {
-      return $this->editionKeys;
+        return $this->editionKeys;
     }
-  
-    public function setEditionKeys(Collection $editionKeys): self 
+
+    public function setEditionKeys(Collection $editionKeys): self
     {
-      $this->editionKeys = $editionKeys;
-      
-      return $this;
+        $this->editionKeys = $editionKeys;
+
+        return $this;
     }
 
     public function getDescription(): string
@@ -92,10 +97,9 @@ class OpenLibraryWork
 
     public function setDescription(string $description): self
     {
-        if(is_object($description)) {
+        if (is_object($description)) {
             $this->description = $description->value;
-        }
-        else {
+        } else {
             $this->description = $description;
         }
 
