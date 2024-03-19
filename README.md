@@ -1,9 +1,9 @@
 # Laravel Wrapper for Open Library Api
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/sse/laravel-open-library.svg?style=flat-square)](https://packagist.org/packages/sse/laravel-open-library)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/sse/laravel-open-library/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/sse/laravel-open-library/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/sse/laravel-open-library/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/sse/laravel-open-library/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/sse/laravel-open-library.svg?style=flat-square)](https://packagist.org/packages/sse/laravel-open-library)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/shiranse/laravel-open-library.svg?style=flat-square)](https://packagist.org/packages/shiranse/laravel-open-library)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/shiranse/laravel-open-library/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/shiranse/laravel-open-library/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/shiranse/laravel-open-library/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/shiranse/laravel-open-library/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/sse/laravel-open-library.svg?style=flat-square)](https://packagist.org/packages/shiranse/laravel-open-library)
 
 The OpenLibrary PHP Package provides a convenient way to interact with the Open Library API in your PHP applications. With this package, you can easily search for books, authors, and other resources available on the Open Library platform. The package offers a fluent interface for creating and interacting with OpenLibraryAuthor and OpenLibraryBook objects, allowing you to retrieve detailed information about authors, including their works, biographies, and related metadata. Additionally, it provides seamless integration with Laravel, allowing you to use Laravel features like facades to access Open Library API with ease. Whether you're building a book catalog, integrating book data into your application, or simply exploring the vast collection of books available on Open Library, this package provides a powerful and intuitive solution for your needs.
 
@@ -14,7 +14,7 @@ The OpenLibrary PHP Package provides a convenient way to interact with the Open 
 You can install the package via composer:
 
 ```bash
-composer require sse/laravel-open-library
+composer require shiranse/laravel-open-library
 ```
 
 You can publish and run the migrations with:
