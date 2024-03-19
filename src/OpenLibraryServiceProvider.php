@@ -2,9 +2,9 @@
 
 namespace ShiranSE\OpenLibrary;
 
+use ShiranSE\OpenLibrary\Commands\OpenLibraryCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use ShiranSE\OpenLibrary\Commands\OpenLibraryCommand;
 
 class OpenLibraryServiceProvider extends PackageServiceProvider
 {
