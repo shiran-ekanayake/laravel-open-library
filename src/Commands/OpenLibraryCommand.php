@@ -1,6 +1,6 @@
 <?php
 
-namespace Sse\OpenLibrary\Commands;
+namespace ShiranSE\OpenLibrary\Commands;
 
 use Illuminate\Console\Command;
 

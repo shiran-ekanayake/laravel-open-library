@@ -1,5 +1,5 @@
 <?php
 
-use Sse\OpenLibrary\Tests\TestCase;
+use ShiranSE\OpenLibrary\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

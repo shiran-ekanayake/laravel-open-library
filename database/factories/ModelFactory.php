@@ -1,6 +1,6 @@
 <?php
 
-namespace Sse\OpenLibrary\Database\Factories;
+namespace ShiranSE\OpenLibrary\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

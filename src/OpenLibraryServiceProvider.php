@@ -1,10 +1,10 @@
 <?php
 
-namespace Sse\OpenLibrary;
+namespace ShiranSE\OpenLibrary;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Sse\OpenLibrary\Commands\OpenLibraryCommand;
+use ShiranSE\OpenLibrary\Commands\OpenLibraryCommand;
 
 class OpenLibraryServiceProvider extends PackageServiceProvider
 {

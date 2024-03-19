@@ -1,13 +1,13 @@
 {
-    "name": "sse/laravel-open-library",
+    "name": "shiranse/laravel-open-library",
     "version": "1.0.0",
     "description": "Laravel Wrapper for Open Library Api",
     "keywords": [
-        "sse",
+        "shiranse",
         "laravel",
         "laravel-open-library"
     ],
-    "homepage": "https://github.com/sse/laravel-open-library",
+    "homepage": "https://github.com/shiranse/laravel-open-library",
     "license": "MIT",
     "authors": [
         {
@@ -36,13 +36,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Sse\\OpenLibrary\\": "src/",
-            "Sse\\OpenLibrary\\Database\\Factories\\": "database/factories/"
+            "ShiranSE\\OpenLibrary\\": "src/",
+            "ShiranSE\\OpenLibrary\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Sse\\OpenLibrary\\Tests\\": "tests/",
+            "ShiranSE\\OpenLibrary\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -74,10 +74,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Sse\\OpenLibrary\\OpenLibraryServiceProvider"
+                "ShiranSE\\OpenLibrary\\OpenLibraryServiceProvider"
             ],
             "aliases": {
-                "OpenLibrary": "Sse\\OpenLibrary\\Facades\\OpenLibrary"
+                "OpenLibrary": "ShiranSE\\OpenLibrary\\Facades\\OpenLibrary"
             }
         }
     },

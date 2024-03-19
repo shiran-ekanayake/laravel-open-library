@@ -1,13 +1,13 @@
 <?php
 
-namespace Sse\OpenLibrary;
+namespace ShiranSE\OpenLibrary;
 
 use Exception;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
-use Sse\OpenLibrary\Classes\OpenLibraryAuthor;
-use Sse\OpenLibrary\Classes\OpenLibraryWork;
+use ShiranSE\OpenLibrary\Classes\OpenLibraryAuthor;
+use ShiranSE\OpenLibrary\Classes\OpenLibraryWork;
 
 class OpenLibrary
 {

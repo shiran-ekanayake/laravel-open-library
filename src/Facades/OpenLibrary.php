@@ -1,16 +1,16 @@
 <?php
 
-namespace Sse\OpenLibrary\Facades;
+namespace ShiranSE\OpenLibrary\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Sse\OpenLibrary\OpenLibrary
+ * @see \ShiranSE\OpenLibrary\OpenLibrary
  */
 class OpenLibrary extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Sse\OpenLibrary\OpenLibrary::class;
+        return \ShiranSE\OpenLibrary\OpenLibrary::class;
     }
 }

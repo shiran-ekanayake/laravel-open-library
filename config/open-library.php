@@ -1,6 +1,6 @@
 <?php
 
-// config for Sse/OpenLibrary
+// config for ShiranSE/OpenLibrary
 return [
 
 ];

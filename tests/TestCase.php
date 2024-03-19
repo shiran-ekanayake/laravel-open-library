@@ -1,10 +1,10 @@
 <?php
 
-namespace Sse\OpenLibrary\Tests;
+namespace ShiranSE\OpenLibrary\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Sse\OpenLibrary\OpenLibraryServiceProvider;
+use ShiranSE\OpenLibrary\OpenLibraryServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Sse\\OpenLibrary\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'ShiranSE\\OpenLibrary\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

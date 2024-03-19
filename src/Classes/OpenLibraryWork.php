@@ -1,10 +1,10 @@
 <?php
 
-namespace Sse\OpenLibrary\Classes;
+namespace ShiranSE\OpenLibrary\Classes;
 
 use Illuminate\Support\Collection;
-use Sse\OpenLibrary\Facades\OpenLibrary;
-use Sse\OpenLibrary\Traits\HasMetaFields;
+use ShiranSE\OpenLibrary\Facades\OpenLibrary;
+use ShiranSE\OpenLibrary\Traits\HasMetaFields;
 
 class OpenLibraryWork
 {

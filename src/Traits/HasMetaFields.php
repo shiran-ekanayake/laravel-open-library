@@ -1,6 +1,6 @@
 <?php
 
-namespace Sse\OpenLibrary\Traits;
+namespace ShiranSE\OpenLibrary\Traits;
 
 trait HasMetaFields
 {
