@@ -232,4 +232,25 @@ class OpenLibraryAuthor
 
         return $this;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'key' => $this->getKey(),
+            'name' => $this->getName(),
+            'title' => $this->getTitle(),
+            'bio' => $this->getBio(),
+            'personalName' => $this->getPersonalName(),
+            'alternateNames' => $this->getAlternateNames()->toArray(),
+            'birthDate' => $this->getBirthDate(),
+            'deathDate' => $this->getDeathDate(),
+            'period' => $this->getPeriod(),
+            'wikipeadiaLink' => $this->getWikipeadiaLink(),
+            'links' => $this->getLinks()->toArray(),
+            'photos' => $this->getPhotos()->toArray(),
+            'topWork' => $this->getTopWork(),
+            'workCount' => $this->getWorkCount(),
+            'topSubjects' => $this->getTopSubjects()->toArray(),
+        ];
+    }
 }
